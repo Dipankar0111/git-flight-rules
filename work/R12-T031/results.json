@@ -1,0 +1,74 @@
+{
+  "status": "PASS",
+  "assertions_verified": [
+    {
+      "fact": "Topic branch ref points to commit B",
+      "expected": "454d3f412f710042c670314839d56e15beb424db",
+      "actual": "454d3f412f710042c670314839d56e15beb424db",
+      "passed": true
+    },
+    {
+      "fact": "Remote tracking ref origin/topic points to commit B",
+      "expected": "454d3f412f710042c670314839d56e15beb424db",
+      "actual": "454d3f412f710042c670314839d56e15beb424db",
+      "passed": true
+    },
+    {
+      "fact": "Bare repository ref refs/heads/topic points to commit B",
+      "expected": "454d3f412f710042c670314839d56e15beb424db",
+      "actual": "454d3f412f710042c670314839d56e15beb424db",
+      "passed": true
+    },
+    {
+      "fact": "Upstream tracking branch for topic configured to origin/topic",
+      "expected": "origin/topic",
+      "actual": "origin/topic",
+      "passed": true
+    },
+    {
+      "fact": "Upstream remote URL points to k88hudson/git-flight-rules",
+      "expected": "https://github.com/k88hudson/git-flight-rules.git",
+      "actual": "https://github.com/k88hudson/git-flight-rules.git",
+      "passed": true
+    },
+    {
+      "fact": "Origin remote URL points to file:// URL of bare repo",
+      "expected": "file:///var/folders/wn/k29hkh8947g33t3cd3x7yvv80000gn/T/gfr_run1_uxi53gil/remote.git",
+      "actual": "file:///var/folders/wn/k29hkh8947g33t3cd3x7yvv80000gn/T/gfr_run1_uxi53gil/remote.git",
+      "passed": true
+    },
+    {
+      "fact": "Working tree and index are clean",
+      "expected": "",
+      "actual": "",
+      "passed": true
+    },
+    {
+      "fact": "notes.txt on topic branch contains 'alpha\\nbeta\\n'",
+      "expected": "alpha\nbeta\n",
+      "actual": "alpha\nbeta\n",
+      "passed": true
+    },
+    {
+      "fact": "todo.txt does not exist on topic branch",
+      "expected": false,
+      "actual": false,
+      "passed": true
+    },
+    {
+      "fact": "todo.txt on main branch contains 'one\\n'",
+      "expected": "one\n",
+      "actual": "one\n",
+      "passed": true
+    },
+    {
+      "fact": "Two independent runs in separate directories match identical trees and states",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    }
+  ],
+  "sample_git_status": "On branch topic\nYour branch is up to date with 'origin/topic'.\n\nnothing to commit, working tree clean",
+  "sample_git_log_2": "454d3f4 Commit B: append beta\n6d05804 Commit A: create notes.txt",
+  "sample_git_remote_v": "origin\tfile:///var/folders/wn/k29hkh8947g33t3cd3x7yvv80000gn/T/gfr_run1_uxi53gil/remote.git (fetch)\norigin\tfile:///var/folders/wn/k29hkh8947g33t3cd3x7yvv80000gn/T/gfr_run1_uxi53gil/remote.git (push)\nupstream\thttps://github.com/k88hudson/git-flight-rules.git (fetch)\nupstream\thttps://github.com/k88hudson/git-flight-rules.git (push)"
+}

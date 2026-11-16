@@ -1,0 +1,42 @@
+{
+  "task": "R12-T031",
+  "guide_section": "Suggesting code via pull requests",
+  "repository_author": {
+    "name": "Course Student",
+    "email": "student@example.invalid"
+  },
+  "default_branch": "main",
+  "commits": [
+    {
+      "commit": "A",
+      "action": "create notes.txt",
+      "content": "alpha\n"
+    },
+    {
+      "commit": "B",
+      "action": "append beta to notes.txt",
+      "content": "beta\n"
+    },
+    {
+      "branch_created": "topic",
+      "at_commit": "B"
+    },
+    {
+      "commit": "C",
+      "action": "add todo.txt",
+      "content": "one\n"
+    }
+  ],
+  "remote_configuration": {
+    "initial_origin": "https://github.com/k88hudson/git-flight-rules.git",
+    "renamed_to": "upstream",
+    "fork_remote_name": "origin",
+    "fork_remote_type": "local bare repository with file:// URL"
+  },
+  "command_sequence": [
+    "git remote rename origin upstream",
+    "git remote add origin file://<bare_repo>",
+    "git checkout topic",
+    "git push --set-upstream origin topic"
+  ]
+}

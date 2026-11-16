@@ -1,0 +1,12 @@
+All assertions PASSED successfully across two independent temporary directory runs!
+Git status on branch topic:
+On branch topic
+Your branch is up to date with 'origin/topic'.
+
+nothing to commit, working tree clean
+Git remote -v:
+origin	file:///var/folders/wn/k29hkh8947g33t3cd3x7yvv80000gn/T/gfr_run1_cmv357d5/remote.git (fetch)
+origin	file:///var/folders/wn/k29hkh8947g33t3cd3x7yvv80000gn/T/gfr_run1_cmv357d5/remote.git (push)
+upstream	https://github.com/k88hudson/git-flight-rules.git (fetch)
+upstream	https://github.com/k88hudson/git-flight-rules.git (push)
+Tracking branch for topic: origin/topic

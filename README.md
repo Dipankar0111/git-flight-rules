@@ -241,6 +241,90 @@ There is no way to suggest a pull request using the CLI using Git (although ther
 
 After all of this, do not forget to respond to any code review feedback.
 
+##### Example: Reproducible setup and pull request workflow
+
+Here is a complete, start-to-finish local example demonstrating how to set up remotes and push a topic branch for a pull request with no undocumented repository state:
+
+**1. Setup**: Initialize a local bare repository to act as your remote fork, and a temporary repository with branch `main`, author `Course Student <student@example.invalid>`, and three commits (branching `topic` at commit B):
+
+```sh
+# Create a local bare repository to act as your remote fork
+$ git init --bare -b main "$HOME/remote.git"
+
+# Initialize a working repository with default branch main
+$ git init -b main my-repo
+$ cd my-repo
+$ git config user.name "Course Student"
+$ git config user.email "student@example.invalid"
+
+# Commit A: create notes.txt with "alpha\n"
+$ printf "alpha\n" > notes.txt
+$ git add notes.txt
+$ git commit -m "Commit A: create notes.txt"
+
+# Commit B: append "beta\n" to notes.txt
+$ printf "beta\n" >> notes.txt
+$ git add notes.txt
+$ git commit -m "Commit B: append beta"
+
+# Create branch topic at commit B
+$ git branch topic
+
+# Commit C: add todo.txt with "one\n"
+$ printf "one\n" > todo.txt
+$ git add todo.txt
+$ git commit -m "Commit C: add todo.txt"
+
+# Initially, origin points to the upstream repository
+$ git remote add origin https://github.com/k88hudson/git-flight-rules.git
+```
+
+**2. Command sequence**: Rename `origin` to `upstream`, add your remote fork as `origin`, switch to the `topic` branch, and push with `--set-upstream`:
+
+```sh
+# Rename original remote from origin to upstream
+(main) $ git remote rename origin upstream
+
+# Add your fork as origin
+(main) $ git remote add origin "file://$HOME/remote.git"
+
+# Switch to the topic branch
+(main) $ git checkout topic
+
+# Push topic branch to origin and configure upstream tracking
+(topic) $ git push --set-upstream origin topic
+```
+
+**3. Expected output**:
+
+Verify that the branch is tracked and the working tree is clean:
+
+```sh
+(topic) $ git status
+On branch topic
+Your branch is up to date with 'origin/topic'.
+
+nothing to commit, working tree clean
+```
+
+Verify that the commit history on `topic` reflects the branch point (commits A and B):
+
+```sh
+(topic) $ git log --oneline -n 2
+<hash> (HEAD -> topic, origin/topic) Commit B: append beta
+<hash> Create notes.txt
+```
+
+Verify the configured remotes:
+
+```sh
+(topic) $ git remote -v
+origin	file:///path/to/remote.git (fetch)
+origin	file:///path/to/remote.git (push)
+upstream	https://github.com/k88hudson/git-flight-rules.git (fetch)
+upstream	https://github.com/k88hudson/git-flight-rules.git (push)
+```
+
 #### Suggesting code via patches
 
 Another approach to suggesting code changes that doesn't rely on third party sites such as Github is to use `git format-patch`.
